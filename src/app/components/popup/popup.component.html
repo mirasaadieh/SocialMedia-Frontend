@@ -1,0 +1,7 @@
+<div class="container" *ngIf="isPopupVisible">
+    <div class="content">
+        <h3>All Followers</h3>
+        <p *ngFor="let follower of followers"> {{ follower.followerUserName }}</p>
+        <button class="btn" (click)="closePopup()">Close</button>
+    </div>
+</div>

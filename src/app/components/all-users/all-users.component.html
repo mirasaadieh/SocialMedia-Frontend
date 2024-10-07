@@ -1,0 +1,24 @@
+<div class="layout">
+    <div class="title">
+        <app-title></app-title>
+    </div>
+    <div class="main">
+        <div>
+            <app-header></app-header>
+        </div>
+        <div class="users">
+            <div class="form">
+                <form [formGroup]="searchForm" class="d-flex" (ngSubmit)="getUsers()">                
+                <input class="form-control me-2" formControlName="userName" type="search" placeholder="Search by username" aria-label="Search">
+                <button class="btn btn-outline" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            </div>
+
+            <app-search *ngFor="let user of users" [User] = "user"></app-search>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <app-footer></app-footer>
+    </div>
+</div>

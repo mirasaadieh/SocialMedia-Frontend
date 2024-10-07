@@ -1,0 +1,20 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+    <h1>Sign In</h1>
+  
+    <div class="form-control">
+      <label for="email">Email</label>
+      <input formControlName="email" id="email" type="email" autocomplete="new-email"/>
+    </div>
+    <div class="form-control">
+      <label for="username">Username</label>
+      <input formControlName="username" id="username" type="username" autocomplete="new-username"/>
+    </div>
+    <div class="form-control">
+      <label for="password">Password</label>
+      <input formControlName="password" id="password" type="password" autocomplete="new-password"/>
+    </div>
+    <button type="submit">Sign In &#8594;</button>
+    <div class="links">
+      <a routerLink="/signin" class="link">Log in</a>
+    </div>
+  </form>

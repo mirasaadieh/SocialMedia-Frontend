@@ -1,0 +1,13 @@
+<div class="container">
+    <form >
+        <div class="user">        
+            <div>
+                <img src="{{User?.profileImg}}" alt="">
+                <b>{{User?.userName}}</b>
+            </div>
+            <div><button class="btn" (click)="toggleFollow(User?.id)">
+                {{ isFollowingUser ? 'Unfollow' : 'Follow' }}
+            </button></div>
+        </div>   
+    </form>
+</div>

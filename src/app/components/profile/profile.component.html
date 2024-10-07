@@ -1,0 +1,47 @@
+
+<div class="layout">
+    <div class="title">
+        <app-title></app-title>
+    </div>
+    <div class="main">
+        <div>
+            <app-header></app-header>
+        </div>
+      <div>
+        <form>
+        <div class="profile" >
+            <div>
+                <img src="{{user?.profileImg}}" width="42" height="42" class="rounded-circle me-2">
+                <strong>{{user?.userName}}</strong>
+                <div class="bio">
+                    <p>{{user?.bio}}</p>
+                </div>
+            </div>
+            <div class="info">
+                <div class="nbPosts">
+                    <div>
+                        <b>{{postCount}}</b>
+                    </div> 
+                    <div>Posts</div>
+                </div>
+                <div class="nbfollowers" (click)="displayFollowers(user?.id)">
+                    <div>
+                        <b>{{followerCount}}</b>
+                    </div> 
+                    <div>Followers</div>
+                </div>
+                <div>
+                    <button type="submit" routerLink="/edit-profile" class="btn">Edit Profile</button>
+                </div>
+            </div>
+        </div>
+        <div class="posts">
+            <app-my-posts *ngFor="let post of posts" [post]="post"></app-my-posts>
+        </div>
+        </form>
+      </div>
+    </div>
+    <div class="footer">
+        <app-footer></app-footer>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="content">
+        <div *ngFor="let cmnt of pComments">
+            <p><b>{{cmnt.userName}}</b></p>
+            <p>{{cmnt.text}}</p>
+        </div>
+        <form [formGroup]="commentForm">
+            <input type="text" formControlName="text" placeholder="Add your comment...">
+            <i class="fa fa-paper-plane icon" (click)="add()" aria-hidden="true"></i>
+
+        </form>
+    </div>  
+</div>

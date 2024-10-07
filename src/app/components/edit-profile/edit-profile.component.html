@@ -1,0 +1,10 @@
+<div class="container" >
+    <h2>Edit Your Profile</h2>
+    <form (ngSubmit)="edit()" [formGroup]="editForm">
+        <input class="form-control"  type="email" id="email" formControlName="email" placeholder="Email">
+        <input class="form-control" type="text" id="userName" formControlName="userName" placeholder="Username">
+        <input class="form-control" type="password" id="passowrd" formControlName="password" placeholder="Password">
+        <input class="form-control" type="text" id="bio" formControlName="bio" placeholder="Bio">
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+     <div class="card" style="width: 18rem;">
+       
+        <div class="card-body">
+          <h5 class="card-title">{{post?.userName}}</h5>
+           <img [src]="post?.image" class="card-img-top" alt="...">
+
+          <p class="card-text">{{post?.caption}}</p>
+          <hr>
+          <a class="btn" [ngClass]="{'color': likedPosts[post?.postId ?? -1]}" (click)="likePost(post?.postId)">
+            <i class="fa-regular fa-thumbs-up"></i>
+            Like {{ likesCount[post?.postId ?? 0] || 0 }}
+          </a>
+          
+          <a class="btn" (click)="displayComments(post?.postId)"><i class="fa-regular fa-comment"></i>
+            Comment {{ cmntsCount[post?.postId ?? 0] || 0 }}</a>
+        </div>
+      </div> 
+    </div>
+  </div>
+</div>

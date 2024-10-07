@@ -1,0 +1,12 @@
+.card{
+    margin: 20px;
+}
+.icon{
+   color: red;
+    padding: 10px;
+    cursor: pointer;
+    margin-right: 0px;
+}
+.color{
+    color: rgb(175, 82, 175);
+  }

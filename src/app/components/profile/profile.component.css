@@ -1,0 +1,59 @@
+
+.main{
+    display: flex;
+}
+.info{
+    display: flex;
+    margin-bottom: 50px;
+    margin-left: 30px;
+}
+.profile{
+    margin:50px 350px;
+    display: flex;
+}
+.profile .bio{
+    margin: 30px;
+}
+.posts{ 
+    margin:10px 350px;
+}
+.nbPosts{
+    margin-right: 20px;
+}
+.btn{
+    background-color: lightgray;
+    font-weight: 500;
+    margin-left: 30px;
+}
+.btn:hover{
+    background-color: rgb(194, 193, 193);
+}
+.footer,.title{
+    display: none;
+}
+
+@media (max-width:827px){
+    .footer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+    .title{
+        display: flex;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+    .profile{
+        margin: 100px 50px;
+        display: block;
+    }
+    .posts{
+        margin: 100px 50px;
+    }
+    .info{display: flex;}
+  }
