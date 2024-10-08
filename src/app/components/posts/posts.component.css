@@ -10,6 +10,9 @@
 .color{
     color: rgb(175, 82, 175);
   }
+  .card-text{
+    padding: 10px;
+  }
 @media (max-width:827px){
     .container{
         margin: auto;

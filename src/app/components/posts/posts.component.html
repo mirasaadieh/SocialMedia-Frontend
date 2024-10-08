@@ -5,9 +5,8 @@
        
         <div class="card-body">
           <h5 class="card-title">{{post?.userName}}</h5>
-           <img [src]="post?.image" class="card-img-top" alt="...">
-
           <p class="card-text">{{post?.caption}}</p>
+           <img [src]="post?.image" class="card-img-top" alt="...">
           <hr>
           <a class="btn" [ngClass]="{'color': likedPosts[post?.postId ?? -1]}" (click)="likePost(post?.postId)">
             <i class="fa-regular fa-thumbs-up"></i>
