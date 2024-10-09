@@ -28,7 +28,7 @@ export class LoginService {
   }
 
   validateUser(UserName: string, Password: string): Observable<any> {
-    return this.http.post<any>("https://localhost:7106/api/User/login",{ UserName, Password });
+    return this.http.post<any>("http://LinkUp.somee.com/api/User/login",{ UserName, Password });
   }
   addUser(user:User):Observable<User>{
     const url = `${this.apiUrl}/User/add`;
