@@ -1,6 +1,6 @@
 export const environment = {
     production:true,
-    apiUrl:"http://LinkUp.somee.com/api",
+    apiUrl:"https://LinkUp.somee.com/api",
     firebase:{
         apiKey: "AIzaSyBJ2Od3qj93pGl5yuaUq9TSFBGmIwLsUWQ",
         authDomain: "social-media-69270.firebaseapp.com",
