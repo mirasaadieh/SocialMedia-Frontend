@@ -20,6 +20,7 @@ export class AllUsersComponent implements OnInit{
     this.getUsers();
   }
   getUsers(){
+    var userId = this.loginService.getUserId() ?? 0;
     var model= new User();
     model.userName=this.searchForm.get('userName')?.value;
     if(model.userName){
@@ -33,7 +34,7 @@ export class AllUsersComponent implements OnInit{
       });
     }
     else{
-    this.loginService.getUsers().subscribe({
+    this.loginService.getUsers(userId).subscribe({
       next: (response) => {
         this.users = response;
       },
