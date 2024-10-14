@@ -14,3 +14,9 @@
     color: rgb(175, 82, 175);
     transition: .6s;
 }
+@media (max-width:400px){
+    .footer i{
+        font-size: .8rem;
+        padding: 10px;
+    }
+}

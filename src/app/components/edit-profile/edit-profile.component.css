@@ -29,3 +29,13 @@ input {
     color: white;
     text-align: center;
 }
+@media (max-width:400px){
+    .container h2{
+        font-size: medium;
+        max-width: 100%;
+        margin: 10px 5px;
+    }
+    .form-control{
+        max-width: 100%;
+    }
+}

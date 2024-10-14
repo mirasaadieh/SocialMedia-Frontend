@@ -38,3 +38,11 @@
         margin-left: 80px;
     }
   }
+@media (max-width:400px){
+    .form{
+        margin: 10px 0;
+    }
+    .form-control{
+        width: 75%;
+    }
+}

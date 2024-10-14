@@ -9,4 +9,10 @@
 }
 .color{
     color: rgb(175, 82, 175);
-  }
+}
+@media (max-width:400px){
+    .container{
+        margin: 20px 5px;
+    }
+
+}

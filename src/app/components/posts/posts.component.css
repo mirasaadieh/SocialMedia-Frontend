@@ -11,12 +11,18 @@
     color: rgb(175, 82, 175);
   }
   .card-text{
-    padding: 10px;
+    padding: 5px;
   }
 @media (max-width:827px){
     .container{
         margin: auto;
-
     }
-
   }
+@media (max-width:400px){
+    .container{
+      margin: 20px 0px;
+  }
+    .card{
+      margin: 10px 0;
+    }
+}
