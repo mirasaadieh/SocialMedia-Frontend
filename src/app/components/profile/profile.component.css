@@ -57,3 +57,8 @@
     }
     .info{display: flex;}
   }
+  @media (max-width:827px){
+    .profile{
+        margin: 50px 5px;
+    }
+  }

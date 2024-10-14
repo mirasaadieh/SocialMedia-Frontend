@@ -40,9 +40,12 @@
   }
 @media (max-width:400px){
     .form{
-        margin: 10px 0;
+        margin: 20px 5px;
     }
     .form-control{
-        width: 75%;
+        max-width: 100%;
+    }
+    .users{
+        margin: 40px 5px;
     }
 }
