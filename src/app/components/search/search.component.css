@@ -16,6 +16,7 @@
         margin: 8px 0;
     }
     .btn{
-        margin: 0px 100px;
+        margin-right: 0px;
+        right: 0px;
     }
 }

@@ -49,4 +49,8 @@
         margin: 40px 0px;
         width: 100%;
     }
+    .layout{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
 }
