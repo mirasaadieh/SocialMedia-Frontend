@@ -36,10 +36,19 @@ export class AllUsersComponent implements OnInit{
     else{
     this.loginService.getUsers(userId).subscribe({
       next: (response) => {
-        this.users = response;
+        if (response && response.length > 0){
+        this.users = response;}
+        else {
+          console.log("No users found.");
+          alert("No users found.");
+        }
       },
       error: (error) => {
-        console.error('Error fetching posts', error);
+        if (error.status === 404) {
+          alert("No users found.");
+        } else {
+          console.error('Error fetching users', error);
+        }
       }
     });
   }
