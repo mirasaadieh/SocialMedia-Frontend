@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SearchComponent implements OnInit{
   @Input() User: User | undefined; 
+  users:User[] = [];
   loggedInUserId: number | undefined; 
   loggedInUserName: string | null = null; 
   isFollowingUser: boolean = false;  // To track follow/unfollow state
@@ -17,7 +18,7 @@ export class SearchComponent implements OnInit{
  ngOnInit(): void {
   
    // Handle case when getUserId() returns null
-   const userId = this.loginService.getUserId();
+   const userId = this.loginService.getUserId()??0;
   
    if (userId !== null) {
      this.loggedInUserId = userId;  // Assign if not null
@@ -29,6 +30,15 @@ export class SearchComponent implements OnInit{
   if (this.User?.id) {
     this.checkIfFollowing(this.User.id);
   }
+
+  this.loginService.getUsers(userId).subscribe({
+    next: (response) => {
+      this.users = response;
+    },
+    error: (error) => {
+      console.error('Error fetching posts', error);
+    }
+  });
 }
 checkIfFollowing(targetUserID:number) {
   this.loginService.isFollowing(this.loggedInUserId!, targetUserID!).subscribe({
