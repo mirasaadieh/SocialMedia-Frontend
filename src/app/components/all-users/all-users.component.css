@@ -47,5 +47,6 @@
     }
     .users{
         margin: 40px 5px;
+        width: 100%;
     }
 }
