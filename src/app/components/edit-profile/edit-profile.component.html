@@ -4,8 +4,8 @@
         <input class="form-control"  type="email" id="email" formControlName="email" placeholder="Email">
         <input class="form-control" type="text" id="userName" formControlName="userName" placeholder="Username">
         <input class="form-control" type="password" id="passowrd" formControlName="password" placeholder="Password">
-        <input class="form-control" type="text" id="bio" formControlName="bio" placeholder="Bio">
         <input class="form-control" type="file" id="image" formControlName="image" (change)="onFileSelected($event)" placeholder="Profile Picture">
+        <textarea  class="form-control" id="bio" formControlName="bio" placeholder="Bio"></textarea>
         <button type="submit" class="btn">Submit</button>
     </form>
 </div>
