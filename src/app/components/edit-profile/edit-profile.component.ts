@@ -3,6 +3,7 @@ import { LoginService } from '../../services/login.service';
 import { User } from '../../interfaces/user.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FileUploadService } from '../../services/file-upload.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -13,7 +14,9 @@ export class EditProfileComponent implements OnInit{
  user:User | undefined;
  editForm:FormGroup;
  userId:number | undefined;
-constructor(private router: Router, private fb:FormBuilder,private loginService:LoginService){
+ selectedFile: File | null = null;
+
+constructor(private router: Router, private fb:FormBuilder,private fileUploadService:FileUploadService,private loginService:LoginService){
   this.editForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     userName: ['', Validators.required],
@@ -38,20 +41,21 @@ ngOnInit(): void {
   // }
 }
 edit(){
-  var model= new User();
-    model.userName=this.editForm.get('userName')?.value;
-    model.email=this.editForm.get('email')?.value;
-    model.password=this.editForm.get('password')?.value;
-    model.bio=this.editForm.get('bio')?.value;
-    model.id=this.userId;
-    console.log(model);
-    if (this.editForm.invalid) {
-      alert("Please enter the fields.");
-      return;
-    }
-   
   const userId = this.loginService.getUserId();
-  if (userId != null) {
+  if (this.editForm.invalid || !this.selectedFile) {
+    alert("Please enter the fields.");
+    return;
+  }
+  this.fileUploadService.uploadFile(this.selectedFile).subscribe((downloadURL) => {  
+    var model= new User();
+        model.userName=this.editForm.get('userName')?.value;
+        model.email=this.editForm.get('email')?.value;
+        model.password=this.editForm.get('password')?.value;
+        model.bio=this.editForm.get('bio')?.value;
+        model.id=this.userId;
+        model.profileImg = downloadURL;
+        console.log(model);
+         if (userId != null) {
     this.loginService.updateUser(userId, model).subscribe({
       next: (response) => {
         
@@ -66,6 +70,10 @@ edit(){
     console.error('User ID or User object is invalid');
   }
 
+ }) ;
+}
+onFileSelected(event: any): void {
+  this.selectedFile = event.target.files[0];
 }
 }
 

@@ -5,6 +5,7 @@
         <input class="form-control" type="text" id="userName" formControlName="userName" placeholder="Username">
         <input class="form-control" type="password" id="passowrd" formControlName="password" placeholder="Password">
         <input class="form-control" type="text" id="bio" formControlName="bio" placeholder="Bio">
+        <input class="form-control" type="file" id="image" formControlName="image" (change)="onFileSelected($event)" placeholder="Profile Picture">
         <button type="submit" class="btn">Submit</button>
     </form>
 </div>
