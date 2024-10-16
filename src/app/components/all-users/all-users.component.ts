@@ -34,7 +34,7 @@ export class AllUsersComponent implements OnInit{
       });
     }
     else{
-    this.loginService.getUsers().subscribe({
+    this.loginService.getUsers(userId).subscribe({
       next: (response) => {
         if (response && response.length > 0){
         this.users = response;}
