@@ -46,14 +46,14 @@ export class LoginService {
     const url = `${this.apiUrl}/User/getUser/${userId}`;
     return this.http.get<any>(url);
   }
-  getUsers(userId:number): Observable<User[]> {    
-    const url = `${this.apiUrl}/User/GetOtherUsers/${userId}`;
-    return this.http.get<User[]>(url);  
-  }
-  // getUsers():Observable<User[]>{
-  //   const url = `${this.apiUrl}/User/allUsers`;
-  //   return this.http.get<User[]>(url);
+  // getUsers(userId:number): Observable<User[]> {    
+  //   const url = `${this.apiUrl}/User/GetOtherUsers/${userId}`;
+  //   return this.http.get<User[]>(url);  
   // }
+  getUsers():Observable<User[]>{
+    const url = `${this.apiUrl}/User/allUsers`;
+    return this.http.get<User[]>(url);
+  }
   setUserId(id: number): void {
     this.userId = id;
     localStorage.setItem('userId', id.toString());  

@@ -34,12 +34,11 @@ export class AllUsersComponent implements OnInit{
       });
     }
     else{
-    this.loginService.getUsers(userId).subscribe({
+    this.loginService.getUsers().subscribe({
       next: (response) => {
         if (response && response.length > 0){
         this.users = response;}
         else {
-          console.log("No users found.");
           alert("No users found.");
         }
       },
