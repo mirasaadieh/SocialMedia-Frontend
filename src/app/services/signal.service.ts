@@ -28,13 +28,13 @@ export class SignalService {
       .catch(err => console.log('Error while starting connection: ' + err));
       
     // Listen for like count updates from the server
-    this.hubConnection.on('ReceiveLikeCount', (postId: number, count: number) => {
+    this.hubConnection.on('ReceiveLikeCountUpdate', (postId: number, count: number) => {
       this.likeCountSubject.next({ postId, count });
     });
     
     
     // Listen for comment count updates from the server
-    this.hubConnection.on('ReceiveCommentCount', (postId: number, count: number) => {
+    this.hubConnection.on('ReceiveCommentCountUpdate', (postId: number, count: number) => {
       this.commentCountSubject.next({ postId, count });
     });
   }
