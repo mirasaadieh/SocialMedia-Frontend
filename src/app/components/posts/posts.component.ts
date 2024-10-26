@@ -103,10 +103,9 @@ export class PostsComponent implements OnInit{
       });}
       else{
          // Unlike the post
-      const likeId = this.likeIds[postId]; // Get the likeId saved earlier
+      const likeId = this.likeIds[postId]; // Get the likeId saved earlier 
+      console.log('Attempting to unlike post with ID:', postId, 'and like ID:', likeId);
       if(likeId){
-        console.log('Attempting to unlike post with ID:', postId, 'and like ID:', likeId);
-
       this.postService.unlikePost(likeId).subscribe({
         next: (response) => {
           console.log(`Post ${postId} unliked successfully.`);
