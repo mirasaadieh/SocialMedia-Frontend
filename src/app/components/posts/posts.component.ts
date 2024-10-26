@@ -101,27 +101,27 @@ export class PostsComponent implements OnInit{
           console.error('Error adding like:', error);
         }
       });}
-      else{
-         // Unlike the post
-      const likeId = this.likeIds[postId]; // Get the likeId saved earlier 
-      console.log('Attempting to unlike post with ID:', postId, 'and like ID:', likeId);
-      if(likeId){
-      this.postService.unlikePost(likeId).subscribe({
-        next: (response) => {
-          console.log(`Post ${postId} unliked successfully.`);
-          this.likedPosts[postId] = false; // Mark as unliked
-        },
-        error: (error) => {
-          console.error('Error unliking post:', error);
+      else {
+        // Unlike the post
+        const likeId = this.likeIds[postId];
+        if (likeId) {
+            this.postService.unlikePost(likeId).subscribe({
+                next: (response) => {
+                    console.log(`Post ${postId} unliked successfully.`);
+                    this.likedPosts[postId] = false; // Mark as unliked
+                    delete this.likeIds[postId]; // Remove like ID
+                },
+                error: (error) => {
+                    console.error('Error unliking post:', error);
+                }
+            });
+        } else {
+            console.error('Like ID is undefined for post', postId);
         }
-      });
-    } else {
-      console.error('Like ID is undefined for post', postId);
-      }
     }
-    } else {
-      console.error('User is not logged in.');
-    }
+} else {
+    console.error('User is not logged in.');
+}
   }
   displayComments(postId: number | undefined){
     const dialogReg = this.dialogRef.open(CommentPopupComponent, {
