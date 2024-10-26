@@ -19,7 +19,7 @@ export class SignalService {
 
   public startConnection = () => {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://LinkUp.somee.com/postHub')  // Replace with your SignalR Hub URL
+      .withUrl('https://localhost:7106/postHub')  // Replace with your SignalR Hub URL
       .build();
 
     this.hubConnection
