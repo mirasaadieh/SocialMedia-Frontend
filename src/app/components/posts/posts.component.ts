@@ -28,9 +28,9 @@ export class PostsComponent implements OnInit{
     this.signalRService.startConnection();
     // Whenever there is a new value, the function inside the subscribe method will be called with the new value.
     this.signalRService.likeCount$.subscribe(data => {
+      console.log('Received like count update:', data);
       this.likesCount[data.postId] = data.count; // Update likes count for the post
     });
-    console.log(this.likesCount);
     
     // data:represents the latest value emitted by the likeCount$
     // Subscribe to comment count updates

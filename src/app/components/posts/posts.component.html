@@ -10,7 +10,7 @@
           <hr>
           <a class="btn" [ngClass]="{'color': likedPosts[post?.postId ?? -1]}" (click)="likePost(post?.postId)">
             <i class="fa-regular fa-thumbs-up"></i>
-            Like {{ likesCount[post?.postId ?? 0] }}
+            Like {{ likesCount[post?.postId ?? 0] || 0}}
           </a>
           
           <a class="btn" (click)="displayComments(post?.postId)"><i class="fa-regular fa-comment"></i>
