@@ -103,6 +103,7 @@ export class PostsComponent implements OnInit{
       else{
          // Unlike the post
       const likeId = this.likeIds[postId]; // Get the likeId saved earlier
+      if(likeId){
       this.postService.unlikePost(likeId).subscribe({
         next: (response) => {
           console.log(`Post ${postId} unliked successfully.`);
@@ -112,7 +113,10 @@ export class PostsComponent implements OnInit{
           console.error('Error unliking post:', error);
         }
       });
+    } else {
+      console.error('Like ID is undefined for post', postId);
       }
+    }
     } else {
       console.error('User is not logged in.');
     }
