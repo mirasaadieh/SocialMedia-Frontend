@@ -30,6 +30,8 @@ export class PostsComponent implements OnInit{
     this.signalRService.likeCount$.subscribe(data => {
       this.likesCount[data.postId] = data.count; // Update likes count for the post
     });
+    console.log(this.likesCount);
+    
     // data:represents the latest value emitted by the likeCount$
     // Subscribe to comment count updates
     this.signalRService.commentCount$.subscribe(data => {
