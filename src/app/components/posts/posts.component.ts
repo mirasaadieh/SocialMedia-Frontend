@@ -6,6 +6,7 @@ import { Like } from '../../interfaces/like.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { CommentPopupComponent } from '../comment-popup/comment-popup.component';
 import { FileUploadService } from '../../services/file-upload.service';
+import { SignalService } from '../../services/signal.service';
 
 
 @Component({
@@ -20,10 +21,20 @@ export class PostsComponent implements OnInit{
  cmntsCount: { [key: number]: number } = {};
  likedPosts: { [postId: number]: boolean } = {}; // Tracks the liked status of each post
  likeIds: { [postId: number]: number } = {};
- constructor(private loginService:LoginService,private postService:PostService,private dialogRef:MatDialog) { }
+ constructor( private signalRService: SignalService,private loginService:LoginService,private postService:PostService,private dialogRef:MatDialog) { }
   ngOnInit(): void {
     const userId = this.loginService.getUserId();
     this.loadPosts();
+    this.signalRService.startConnection();
+    // Whenever there is a new value, the function inside the subscribe method will be called with the new value.
+    this.signalRService.likeCount$.subscribe(data => {
+      this.likesCount[data.postId] = data.count; // Update likes count for the post
+    });
+    // data:represents the latest value emitted by the likeCount$
+    // Subscribe to comment count updates
+    this.signalRService.commentCount$.subscribe(data => {
+      this.cmntsCount[data.postId] = data.count; // Update comments count for the post
+    });
   }
  
   loadPosts(): void {
