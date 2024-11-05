@@ -25,18 +25,18 @@ export class PostsComponent implements OnInit{
   ngOnInit(): void {
     const userId = this.loginService.getUserId();
     this.loadPosts();
-    this.signalRService.startConnection();
-    // Whenever there is a new value, the function inside the subscribe method will be called with the new value.
-    this.signalRService.likeCount$.subscribe(data => {
-      console.log('Received like count update:', data);
-      this.likesCount[data.postId] = data.count; // Update likes count for the post
-    });
+    // this.signalRService.startConnection();
+    // // Whenever there is a new value, the function inside the subscribe method will be called with the new value.
+    // this.signalRService.likeCount$.subscribe(data => {
+    //   console.log('Received like count update:', data);
+    //   this.likesCount[data.postId] = data.count; // Update likes count for the post
+    // });
     
-    // data:represents the latest value emitted by the likeCount$
-    // Subscribe to comment count updates
-    this.signalRService.commentCount$.subscribe(data => {
-      this.cmntsCount[data.postId] = data.count; // Update comments count for the post
-    });
+    // // data:represents the latest value emitted by the likeCount$
+    // // Subscribe to comment count updates
+    // this.signalRService.commentCount$.subscribe(data => {
+    //   this.cmntsCount[data.postId] = data.count; // Update comments count for the post
+    // });
   }
  
   loadPosts(): void {
@@ -106,24 +106,21 @@ export class PostsComponent implements OnInit{
       else {
         // Unlike the post
         const likeId = this.likeIds[postId];
-        if (likeId) {
+       
             this.postService.unlikePost(likeId).subscribe({
                 next: (response) => {
                     console.log(`Post ${postId} unliked successfully.`);
                     this.likedPosts[postId] = false; // Mark as unliked
-                    delete this.likeIds[postId]; // Remove like ID
+                    // delete this.likeIds[postId]; // Remove like ID
                 },
                 error: (error) => {
                     console.error('Error unliking post:', error);
                 }
             });
-        } else {
-            console.error('Like ID is undefined for post', postId);
-        }
     }
-} else {
-    console.error('User is not logged in.');
-}
+    } else {
+        console.error('User is not logged in.');
+    }
   }
   displayComments(postId: number | undefined){
     const dialogReg = this.dialogRef.open(CommentPopupComponent, {

@@ -31,20 +31,20 @@ export class PostService {
     return this.http.post<Post>(url,post,httpOptions);
   }
   getCountofLikes(postId:number): Observable<any> {   
-    // const url = `${this.apiUrl}/Post/countLikes/${postId}`;
-    // return this.http.get<any>(url); 
-    return this.signalRService.likeCount$.pipe(
-      // Filter to only get the count for the specific postId
-      filter(data => data.postId === postId)
-    ); 
+    const url = `${this.apiUrl}/Post/countLikes/${postId}`;
+    return this.http.get<any>(url); 
+    // return this.signalRService.likeCount$.pipe(
+    //   // Filter to only get the count for the specific postId
+    //   filter(data => data.postId === postId)
+    // ); 
   }
   getCountofCmnts(postId:number): Observable<any> {   
-    // const url = `${this.apiUrl}/Post/countComments/${postId}`;
-    // return this.http.get<any>(url);  
-    return this.signalRService.commentCount$.pipe(
-      // Filter to only get the count for the specific postId
-      filter(data => data.postId === postId)
-    );
+    const url = `${this.apiUrl}/Post/countComments/${postId}`;
+    return this.http.get<any>(url);  
+    // return this.signalRService.commentCount$.pipe(
+    //   // Filter to only get the count for the specific postId
+    //   filter(data => data.postId === postId)
+    // );
   }
   likePost(like:Like):Observable<Like>{
     const url = `${this.apiUrl}/Like/add`;
